@@ -21,7 +21,7 @@ function SignIn () {
             setMessage(`${error.message}`);
         } else {
             setMessage("Login successful");
-            navigate('/'); // Redirect to home page after successful login
+            navigate('/'); // Redirect to main after successful login
         }
     }
 
@@ -83,6 +83,10 @@ function SignIn () {
                             </button>
                         </div>
                         </form>
+
+                        <p>
+                            Don't have an account? <a href="/signup" className="text-indigo-600 hover:text-indigo-500">Sign Up</a>
+                        </p>
         
                         {/* Status message */}
                         {message && (

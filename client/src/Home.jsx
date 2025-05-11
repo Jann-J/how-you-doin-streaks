@@ -4,7 +4,7 @@ import ToDoHabitHome from './ToDo/ToDoHome.jsx';
 
 function Home (){
     return(
-        <div className="h-screen w-screen bg-blue-500 text-white flex flex-col">
+        <div className="h-screen w-screen bg-blue-300 text-white flex flex-col">
             <PanelGroup autoSaveId="habit" direction="vertical">
                 <Panel defaultSize={60}>
                     <HabitHome/>

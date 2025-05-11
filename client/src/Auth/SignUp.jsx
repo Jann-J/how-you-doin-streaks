@@ -9,36 +9,16 @@ function SignUp () {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const {data: signUpData, error: signUpError} = await supabase.auth.signUp({
+        const {data, error} = await supabase.auth.signUp({
             email,
             password
         })
 
-        if(signUpError){
-            setMessage(`${signUpError.message}`);
+        if(error){
+            setMessage(`${error.message}`);
+        } else {
+            setMessage("Successful signup. Please check your email for confirmation."); //after confirmation to login page
         }
-
-        const user = signUpData?.user;
-
-        const { data: existingUser, error: fetchError } = await supabase
-            .from('users')
-            .select('*')
-            .eq('user_id', user.id)
-            .maybeSingle();
-            console.log(fetchError);
-
-            if (!existingUser && !fetchError) {
-            const { error: insertError } = await supabase.from('users').insert({
-                user_id: user.id,     // FK to auth.users.id
-                created_at: new Date().toISOString()
-            });
-
-            if (insertError) {
-                setMessage(`Error inserting user data: ${insertError.message}`);
-                return;
-            }
-    }
-    setMessage("Sign up successful. Please check your email for confirmation.");
     }
 
     return(
@@ -98,6 +78,10 @@ function SignUp () {
                     </button>
                 </div>
                 </form>
+
+                <p>
+                    Already have an account? <a href="/login" className="text-indigo-600 hover:text-indigo-500">Login</a>
+                </p>
 
                 {/* Status message */}
                 {message && (

@@ -1,1 +1,10 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@300;600&display=swap');
+@import 'tailwindcss';
+
+.roboto {
+    font-family: 'Roboto', sans-serif;
+}
+  
+.poppins {
+    font-family: 'Poppins', sans-serif;
+}  
