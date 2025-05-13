@@ -8,7 +8,7 @@ import TodoCard from "./ToDoCard";
 function AddTodoCard({onClick}) {
   return (
     <div onClick={onClick} 
-    className="bg-blue-400 p-4 rounded-xl shadow-md flex items-center justify-center cursor-pointer hover:bg-blue-300 transition">
+    className="bg-blue-400 p-4 rounded-4xl shadow-md flex items-center justify-center cursor-pointer hover:bg-blue-300 transition">
       <span className="text-xl font-bold">+ Add Todo</span>
     </div>
   );
@@ -59,15 +59,15 @@ function ToDoHabitHome() {
   const visibleTodos = showAll ? toDos : toDos.slice(0, maxVisible);
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold poppins text-center mb-6 p-8">
+    <div className="p-4">
+      <h1 className="text-3xl font-satisfy font-bold poppins text-center mb-6">
         To-do list
       </h1>
 
       {error && <p className="text-red-500 text-center">{error}</p>}
 
       {loading ? (
-        <p className="text-center">Loading...</p>
+        <p className="text-center">Summoning the ancient scrolls of productivity…</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {visibleTodos.map((todo) => (

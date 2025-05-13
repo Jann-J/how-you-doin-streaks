@@ -1,10 +1,13 @@
 import {Panel, PanelGroup, PanelResizeHandle} from 'react-resizable-panels';
-import HabitHome from './Habit/Home.jsx';
+import HabitHome from './Habit/HabitHome.jsx';
 import ToDoHabitHome from './ToDo/ToDoHome.jsx';
+import NavBar from './Components/NavBar.jsx';
+import Footer from './Components/Footer.jsx';
 
 function Home (){
     return(
         <div className="h-screen w-screen bg-blue-300 text-white flex flex-col">
+            <NavBar />
             <PanelGroup autoSaveId="habit" direction="vertical">
                 <Panel defaultSize={60}>
                     <HabitHome/>
@@ -19,6 +22,7 @@ function Home (){
                     <ToDoHabitHome/>
                 </Panel>
             </PanelGroup>
+            <Footer />
         </div>
     )
 }
