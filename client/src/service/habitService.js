@@ -15,13 +15,13 @@ export const fetchHabits = async () => {
         .from('habits')
         .select('*')
         .eq('user_id', user.id)
-        .order('date_created', {ascending: false});
+        .order('created_at', {ascending: false});
 
     if (habitError){
         throw new Error(habitError.message);
     }
-    console.log(habit_tracker); //delete later
-    return {user, habits};
+   
+    return habits || []; // returns an array
 }
 
 //adds habit table
@@ -50,7 +50,7 @@ export const updateStreak = async (user_id) => {
 }
 
 //to unable a habit
-const disableHabit = async (habitId) => {
+export const disableHabit = async (habitId) => {
     return await supabase
         .from('habits')
         .update({status : true})
@@ -58,7 +58,7 @@ const disableHabit = async (habitId) => {
 }
 
 //to delete a habit
-const deleteHabit = async (habitId) => {
+export const deleteHabit = async (habitId) => {
     return await supabase
         .from('habits')
         .delete()
