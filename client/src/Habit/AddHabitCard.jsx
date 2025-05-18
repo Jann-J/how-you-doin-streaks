@@ -37,11 +37,11 @@ function AddHabitCard({ userId, onHabitAdded }) {
     if (!isOpen) {
         return (
             <div
-                className="flex items-center bg-white rounded-full px-4 py-2 shadow-sm w-fit cursor-pointer hover:bg-gray-100"
+                className="flex items-center bg-white rounded-full px-4 py-2 shadow-sm w-50 cursor-pointer hover:bg-gray-100"
                 onClick={() => setIsOpen(true)}
             >
                 <div className="w-4 h-4 rounded-full mr-3 bg-purple-500"></div>
-                <div className="text-sm font-medium text-gray-600">Add Habit</div>
+                <div className="text-sm font-medium text-gray-600">+ Add Habit</div>
             </div>
         );
     }

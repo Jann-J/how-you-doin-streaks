@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 
 import HabitCard from "./HabitCard";
 import AddHabitCard from "./AddHabitCard";
+import HabitTrack from "./HabitTrack";
+import HabitColumn from "./HabitColumn";
 
 import supabase from "../config/supabaseClients";
 import { fetchHabits } from "../service/habitService";
@@ -48,12 +50,16 @@ function HabitHome() {
                 <div className="text-gray-500">No habits found.</div>
             )}
 
-            {habits.map((habit) => (
-                <HabitCard key={habit.id} habit={habit} />
-            ))}
+            {/* Use flex-column instead of grid */}
+            <div className="flex flex-col space-y-2">
+                {habits.map((habit) => (
+                    <HabitColumn key={habit.id} habit={habit} />
+                ))}
+            </div>
 
-            <AddHabitCard onHabitAdded={fetchHabits} userId={user ? user.id : null}/>
+            <AddHabitCard onHabitAdded={fetchHabits} userId={user ? user.id : null} />
         </div>
+
     );
 }
 
