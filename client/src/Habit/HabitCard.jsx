@@ -13,7 +13,7 @@ function HabitCard({ habit }) {
     };
 
     return (
-        <div className="relative flex items-center bg-white rounded-full px-4 py-2 shadow-sm w-50">
+        <div className="relative flex items-center bg-white rounded-full px-4 py-2 shadow-sm w-60">
             {/* Colored Circle */}
             <div
                 className="w-4 h-4 rounded-full mr-3 cursor-pointer"

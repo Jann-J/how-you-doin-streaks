@@ -8,13 +8,13 @@ function Home (){
     return(
         <div className="h-screen w-screen bg-blue-300 text-white flex flex-col">
             <NavBar />
-            <PanelGroup autoSaveId="habit" direction="vertical">
-                <Panel defaultSize={60}>
+            <PanelGroup autoSaveId="habit" direction="horizontal">
+                <Panel defaultSize={50}>
                     <HabitHome/>
                 </Panel>
 
                 {/* slider */}
-                <PanelResizeHandle className="h-1 bg-zinc-900 hover:bg-zinc-700 
+                <PanelResizeHandle className="w-1 bg-zinc-900 hover:bg-zinc-700 
                                     active:bg-blue-400 transition-colors
                                     cursor-ns-resize"/>
 

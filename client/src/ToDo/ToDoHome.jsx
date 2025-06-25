@@ -47,6 +47,7 @@ function ToDoHabitHome() {
       setError(error.message);
     } else {
       setToDos(data);
+      
       console.log(data);
     }
     setLoading(false);
@@ -56,7 +57,12 @@ function ToDoHabitHome() {
     fetchToDos();
   }, []);
 
-  const visibleTodos = showAll ? toDos : toDos.slice(0, maxVisible);
+  const sortedTodos = [...toDos].sort((a, b) => {
+        if (!!a.completed_at === !!b.completed_at) return 0;
+        return a.completed_at ? 1 : -1;
+    });
+
+  const visibleTodos = showAll ? sortedTodos : sortedTodos.slice(0, maxVisible);
 
   return (
     <div className="p-4">
@@ -69,7 +75,7 @@ function ToDoHabitHome() {
       {loading ? (
         <p className="text-center">Summoning the ancient scrolls of productivity…</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-row-1 sm:grid-rows-2 md:grid-rows-3 lg:grid-rows-4 gap-4">
           {visibleTodos.map((todo) => (
             <TodoCard key={todo.id} todo={todo}  fetch={fetchToDos}/>
           ))}

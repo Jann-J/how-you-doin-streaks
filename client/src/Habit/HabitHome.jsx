@@ -49,6 +49,9 @@ function HabitHome() {
             {habits.length === 0 && !error && (
                 <div className="text-gray-500">No habits found.</div>
             )}
+            <h1 className="text-3xl font-satisfy font-bold poppins text-center mb-6">
+            Track Habits 'ere
+            </h1>
 
             {/* Use flex-column instead of grid */}
             <div className="flex flex-col space-y-2">

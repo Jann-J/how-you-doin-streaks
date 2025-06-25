@@ -7,9 +7,7 @@ function HabitColumn({ habit }) {
     const [past7Days, setPast7Days] = useState([]);
     const [todayStatus, setTodayStatus] = useState(false);
 
-    //8 latest checkin dates
-    useEffect(() => {
-        const loadTracker = async () => {
+    const loadTracker = async () => {
             try {
                 const data = await fetchTracker(habit.id);
                 const past7 = data.map(item => item.checkin_date);
@@ -19,7 +17,10 @@ function HabitColumn({ habit }) {
             } catch (err) {
                 console.error(err.message || 'Failed to fetch tracker data.');
             }
-        };
+    };
+
+    //8 latest checkin dates
+    useEffect(() => {
 
         loadTracker();
     }, [habit.id]);
@@ -27,7 +28,14 @@ function HabitColumn({ habit }) {
     return (
         <div className="flex items-center space-x-4 h-10">
             <HabitCard habit={habit} />
-            <HabitTrack past7Days={past7Days} todayStatus={todayStatus} />
+            <HabitTrack
+                habitId={habit.id}
+                userId={habit.user_id}
+                past7Days={past7Days}
+                todayStatus={todayStatus}
+                reloadTracker={loadTracker}
+                habitColor={habit.habit_color}
+            />
         </div>
     );
 }

@@ -18,18 +18,18 @@ export const fetchTracker = async (habitId) => {
 
 
 //updates habit tracker data when a habit is completed today or before today
-export const addDateHabitTracker = async (habitId, newDate, user) => {
-    const {data, error} = await supabase
+export const addDateHabitTracker = async (habitId, newDate, userId) => {
+    const { error } = await supabase
         .from('habit_checkins')
         .insert([{
-            habit_id : habitId,
-            checkin_date : newDate,
-            user_id : user.id,
-        }])
-    if (error){
+            habit_id: habitId,
+            checkin_date: newDate,
+            user_id: userId,
+        }], { upsert: true, onConflict: 'habit_id,checkin_date,user_id' }); // upsert prevents duplicates
+    if (error && error.code !== '23505') { // 23505 is unique violation
         throw new Error(error.message);
     }
-}
+};
 
 //acts like toggle onClick
 //if date is already present, it will remove the date from habit tracker
